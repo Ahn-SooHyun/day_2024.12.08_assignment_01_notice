@@ -2,8 +2,13 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Calc1 from "./comp/calc/Study_01";
+
 import Inp1 from "./comp/inp/input_01";
 import Oup1 from "./comp/inp/output_01";
+import Ref1 from "./comp/inp/Ref_01";
+
+import Join from "./comp/pro/Join";
+
 import Ax1 from "./comp/ax/ax01";
 
 function App() {
@@ -18,6 +23,9 @@ function App() {
 
           <Route path={"/Inp1"} element={<Inp1 />} />
           <Route path={"/Oup1"} element={<Oup1 />} />
+          <Route path={"/Ref1"} element={<Ref1 />} />
+
+          <Route path={"/Join"} element={<Join />} />
 
           <Route path={"/Ax1"} element={<Ax1 />} />
         </Routes>
@@ -42,6 +50,12 @@ function Home() {
       <br />
       <h4>데이터 출력</h4>
       <Link to="/Oup1">Oup1로 이동하기</Link>
+      <br />
+      <Link to="/Ref1">Ref1로 이동하기</Link>
+      <br />
+
+      <h4>Join</h4>
+      <Link to="/Join">Join로 이동하기</Link>
       <br />
 
       <h4> Axios</h4>
