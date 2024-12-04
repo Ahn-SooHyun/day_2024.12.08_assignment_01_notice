@@ -4,6 +4,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Calc1 from "./comp/calc/Study_01";
 import Inp1 from "./comp/inp/input_01";
 import Oup1 from "./comp/inp/output_01";
+import Ax1 from "./comp/ax/ax01";
 
 function App() {
   return (
@@ -14,8 +15,11 @@ function App() {
           <Route path={"/"} element={<Home />} />
           <Route path={"/about"} element={<About />} />
           <Route path={"/cal1"} element={<Calc1 />} />
+
           <Route path={"/Inp1"} element={<Inp1 />} />
           <Route path={"/Oup1"} element={<Oup1 />} />
+
+          <Route path={"/Ax1"} element={<Ax1 />} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -38,6 +42,10 @@ function Home() {
       <br />
       <h4>데이터 출력</h4>
       <Link to="/Oup1">Oup1로 이동하기</Link>
+      <br />
+
+      <h4> Axios</h4>
+      <Link to="/ax1">Axios 사용</Link>
     </div>
   );
 }
