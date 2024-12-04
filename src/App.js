@@ -2,6 +2,8 @@ import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Calc1 from "./comp/calc/Study_01";
+import Inp1 from "./comp/inp/input_01";
+import Oup1 from "./comp/inp/output_01";
 
 function App() {
   return (
@@ -12,6 +14,8 @@ function App() {
           <Route path={"/"} element={<Home />} />
           <Route path={"/about"} element={<About />} />
           <Route path={"/cal1"} element={<Calc1 />} />
+          <Route path={"/Inp1"} element={<Inp1 />} />
+          <Route path={"/Oup1"} element={<Oup1 />} />
         </Routes>
       </BrowserRouter>
     </div>
@@ -27,6 +31,13 @@ function Home() {
       <Link to="/about">About으로 이동</Link>
       <br />
       <Link to="/cal1">Cal1로 이동하기</Link>
+      <br />
+
+      <h4>데이터 옮기기</h4>
+      <Link to="/Inp1">Inp1로 이동하기</Link>
+      <br />
+      <h4>데이터 출력</h4>
+      <Link to="/Oup1">Oup1로 이동하기</Link>
     </div>
   );
 }
