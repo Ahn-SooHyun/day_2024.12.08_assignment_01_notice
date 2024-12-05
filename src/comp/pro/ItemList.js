@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { itemList } from "../api/item";
+import { itemList, itemgood } from "../api/item";
 import ItemArea from "./itemArea";
 
 export default function Study() {
@@ -25,6 +25,22 @@ export default function Study() {
         console.log(res.data.data);
       }
     });
+  }
+
+  async function changeItem(idx) {
+    let obj = new Object();
+    obj.itemIdx = idx;
+    await itemgood(obj).then((res) => {
+      //axios 호출 좋아요 DB 호출
+      console.log(res);
+    });
+
+    const copyItems = [...items];
+    copyItems[idx - 1] = {
+      ...copyItems[idx - 1],
+      good: copyItems[idx - 1].good + 1,
+    };
+    setItems(copyItems);
   }
 
   //useState가 변화를 감지할 경우, 해당 event가 동작 되도록 정의
@@ -72,7 +88,15 @@ export default function Study() {
 
       {/** 아이템 리스트 */}
       {items.map((item, index) => (
-        <ItemArea item={item} index={index}></ItemArea>
+        <ItemArea
+          item={item}
+          index={index}
+          onGoodUp={(idx) => {
+            const copy = items.copy;
+            console.log("parent : ", idx);
+            changeItem(idx);
+          }}
+        ></ItemArea>
       ))}
     </div>
   );
