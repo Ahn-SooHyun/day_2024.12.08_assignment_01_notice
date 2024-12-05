@@ -40,6 +40,15 @@ export const memberRegist = (obj) => {
 };
 
 /**
+ * Login
+ * @param {*} obj
+ * @returns
+ */
+export const memberLogin = (obj) => {
+  return api.post("/member/login", JSON.stringify(obj));
+};
+
+/**
  * Assignment Day 20241204
  * @param {*} obj
  * @returns
