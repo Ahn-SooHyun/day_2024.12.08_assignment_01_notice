@@ -1,5 +1,6 @@
 import api from "../ax/axiosSetting";
 
+//============================================================================================
 /**
  * 아이디 중복 체크
  * @Param {id: 검사 아이디} obj
@@ -39,6 +40,7 @@ export const memberRegist = (obj) => {
   return api.post("/member/regist", JSON.stringify(obj));
 };
 
+//============================================================================================
 /**
  * Login
  * @param {*} obj
@@ -48,6 +50,7 @@ export const memberLogin = (obj) => {
   return api.post("/member/login", JSON.stringify(obj));
 };
 
+//============================================================================================
 /**
  * Assignment Day 20241204
  * @param {*} obj

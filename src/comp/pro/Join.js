@@ -67,6 +67,7 @@ export default function Study() {
 
   return (
     <div>
+      <h1>Register</h1>
       <input
         type="text"
         placeholder="ID"
