@@ -11,6 +11,9 @@ import Join from "./comp/pro/Join";
 
 import Ax1 from "./comp/ax/ax01";
 
+import Assignment_20241204_Login from "./comp/assignment/day20241204/login";
+import Assignment_20241204_MyPage from "./comp/assignment/day20241204/MyPage";
+
 function App() {
   return (
     <div className="App">
@@ -28,6 +31,15 @@ function App() {
           <Route path={"/Join"} element={<Join />} />
 
           <Route path={"/Ax1"} element={<Ax1 />} />
+
+          <Route
+            path={"/Assignment_20241204_Login"}
+            element={<Assignment_20241204_Login />}
+          />
+          <Route
+            path={"/Assignment_20241204_MyPage"}
+            element={<Assignment_20241204_MyPage />}
+          />
         </Routes>
       </BrowserRouter>
     </div>
@@ -60,6 +72,10 @@ function Home() {
 
       <h4> Axios</h4>
       <Link to="/ax1">Axios 사용</Link>
+      <br />
+
+      <h4> Assignment_20241204</h4>
+      <Link to="/Assignment_20241204_Login">loginPage</Link>
     </div>
   );
 }
