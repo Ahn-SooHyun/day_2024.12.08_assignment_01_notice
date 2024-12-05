@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
-import { memberIdCheck, areaList } from "../api/member";
+import { useEffect, useRef, useState } from "react";
+import { memberIdCheck, areaList, memberRegist } from "../api/member";
 
 export default function Study() {
   const [id, setId] = useState(""); //ID
+  const [idChk, setIdChk] = useState(""); //중복 체크 ID
   const [pw, setPw] = useState(""); //PW
   const [name, setName] = useState(""); //Name
   const [email, setEMail] = useState(""); //E-Mail
@@ -11,6 +12,8 @@ export default function Study() {
   const [area, setArea] = useState(""); //지역
 
   const [areas, setAreas] = useState([]); //지역 리스트
+
+  const idRef = useRef(); //ID Adress , tag
 
   useEffect(() => {
     startList();
@@ -35,6 +38,10 @@ export default function Study() {
   function joinAction() {
     //유효성 검사
     //javaScript유효성 검사 코드
+    if (id.length == 0 || id !== idChk) {
+      alert("아이디 중복 체크부터 해주세요.");
+      return;
+    }
 
     //값 담는다.
     const obj = {
@@ -44,8 +51,18 @@ export default function Study() {
       email: email,
       birth: birth,
       gender: gender,
-      areaIdx: areas,
+      areaIdx: area,
     };
+
+    console.log(obj);
+
+    memberRegist(obj)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(`err : ${err}`);
+      });
   }
 
   return (
@@ -54,6 +71,7 @@ export default function Study() {
         type="text"
         placeholder="ID"
         value={id}
+        ref={idRef}
         onChange={(e) => {
           setId(e.target.value);
         }}
@@ -62,6 +80,11 @@ export default function Study() {
         type="button"
         value="중복 체크"
         onClick={() => {
+          if (id.length == 0) {
+            alert("ID를 입력해 주세요");
+            return;
+          }
+
           let obj = new Object();
           obj.id = id;
 
@@ -71,7 +94,8 @@ export default function Study() {
           check.then((res) => {
             console.log("========================");
             console.log("         성공");
-            console.log(res);
+            setIdChk(id);
+            idRef.current.disabled = true;
           });
 
           //실패
