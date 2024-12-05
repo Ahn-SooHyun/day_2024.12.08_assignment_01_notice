@@ -8,6 +8,7 @@ export default function Study() {
   const [keyword, setKeyword] = useState("");
 
   const catagoryLists = [
+    { id: "0", name: "ALL" },
     { id: "1", name: "도서" },
     { id: "2", name: "전자" },
     { id: "3", name: "생활" },
@@ -17,12 +18,9 @@ export default function Study() {
   //Java는 오버로딩이 필요한 갯수만큼 method를 만들면.
   //JavaScript는 필요 없으면 생략.
   function startItemList(param) {
-    console.log("itemList");
     itemList(param).then((res) => {
-      console.log(res);
       if (res.data.code == 200) {
         setItems(res.data.data);
-        console.log(res.data.data);
       }
     });
   }
@@ -47,16 +45,17 @@ export default function Study() {
   //이 부분 사용 할 때, [무한루프] 조심 하세요.
   useEffect(() => {
     searchBtn();
-  }, [keyword]);
+  }, [keyword, categoryId]);
 
   function categoryNum(num) {
-    console.log("num: ", num);
+    setCategortId(num);
   }
 
   function searchBtn() {
     let param = new Object();
     param.keyword = keyword;
-    console.log(param);
+    param.categoryIdx = categoryId;
+
     startItemList(param);
   }
 
@@ -89,11 +88,10 @@ export default function Study() {
       {/** 아이템 리스트 */}
       {items.map((item, index) => (
         <ItemArea
+          key={index}
           item={item}
           index={index}
           onGoodUp={(idx) => {
-            const copy = items.copy;
-            console.log("parent : ", idx);
             changeItem(idx);
           }}
         ></ItemArea>
