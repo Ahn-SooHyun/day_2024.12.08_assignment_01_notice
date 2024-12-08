@@ -28,3 +28,11 @@ export const noticedDelete = (obj) => {
     },
   });
 };
+
+export const noticedEdit = (obj) => {
+  return api.post("/notice/edit", JSON.stringify(obj), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};

@@ -74,7 +74,7 @@ export default function NoticeDetail() {
   };
 
   const handleEditClick = () => {
-    navigate(`/edit-notice/${id}`); // 수정 페이지로 이동
+    navigate(`/NoticeEdit/${id}`); // 수정 페이지로 이동
   };
 
   const handleDeleteClick = () => {
