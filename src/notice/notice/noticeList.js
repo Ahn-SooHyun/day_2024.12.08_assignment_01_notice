@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { noticeList } from "../api/notice";
-import "./NoticeList.css";
+import "./noticeList.css";
 
 export default function NoticeList() {
   const [notices, setNotices] = useState([]);
@@ -38,7 +38,6 @@ export default function NoticeList() {
 
     startNoticeList
       .then((res) => {
-        console.log(res.data);
         setNotices(res.data.data || []); // 데이터 배열 확인 후 설정
         setLoading(false);
       })
@@ -62,11 +61,25 @@ export default function NoticeList() {
     fetchNotices(cookieValue);
   };
 
+  const addition = () => {
+    const cookieValue = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("CT_AT="))
+      ?.split("=")[1];
+
+    if (!cookieValue) {
+      navigate("/Login");
+      return;
+    }
+
+    fetchNotices(cookieValue);
+  };
+
   if (loading) return <div className="notice-list loading">로딩 중...</div>;
   if (error) return <div className="notice-list error">{error}</div>;
 
   const handleDetail = (id) => {
-    navigate(`/notices/${id}`);
+    navigate(`/NoticeDetail/${id}`);
   };
 
   return (
@@ -86,6 +99,7 @@ export default function NoticeList() {
           onChange={(e) => setTitle(e.target.value)}
         />
         <button onClick={handleSearch}>검색</button>
+        <button onClick={addition}>추가</button>
       </div>
       <table className="notice-table">
         <thead>
@@ -109,7 +123,7 @@ export default function NoticeList() {
                 <td>{notice.title}</td>
                 <td>{notice.category}</td>
                 <td>{notice.userIdx}</td>
-                <td>{notice.likes}</td>
+                <td>{notice.good}</td>
                 <td>{new Date(notice.userDate).toLocaleDateString()}</td>
               </tr>
             ))

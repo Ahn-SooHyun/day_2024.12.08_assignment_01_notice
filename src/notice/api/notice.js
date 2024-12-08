@@ -8,3 +8,23 @@ import api from "../ax/axiosSetting";
 export const noticeList = (param) => {
   return api.get("/notice/list", { params: param });
 };
+
+export const noticeDetail = (param) => {
+  return api.get("/notice/detail", { params: param });
+};
+
+export const noticeGood = (obj) => {
+  return api.post("/notice/good", JSON.stringify(obj), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
+
+export const noticedDelete = (obj) => {
+  return api.post("/notice/delete", JSON.stringify(obj), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};

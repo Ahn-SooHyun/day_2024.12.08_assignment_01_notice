@@ -5,6 +5,7 @@ import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
 import Login from "./notice/login/login";
 
 import NoticeList from "./notice/notice/noticeList";
+import NoticeDetail from "./notice/notice/noticeDetail";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path={"/"} element={<Home />} />
           <Route path={"/Login"} element={<Login />} />
           <Route path={"/NoticeList"} element={<NoticeList />} />
+          <Route path="/NoticeDetail/:id" element={<NoticeDetail />} />
         </Routes>
       </BrowserRouter>
     </div>
