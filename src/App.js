@@ -7,6 +7,7 @@ import Login from "./notice/login/login";
 import NoticeList from "./notice/notice/noticeList";
 import NoticeDetail from "./notice/notice/noticeDetail";
 import NoticeEdit from "./notice/notice/noticeEdit";
+import NoticeAddition from "./notice/notice/noticeAddition";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path={"/NoticeList"} element={<NoticeList />} />
           <Route path="/NoticeDetail/:id" element={<NoticeDetail />} />
           <Route path="/NoticeEdit/:id" element={<NoticeEdit />} />
+          <Route path="/NoticeAddition" element={<NoticeAddition />} />
         </Routes>
       </BrowserRouter>
     </div>

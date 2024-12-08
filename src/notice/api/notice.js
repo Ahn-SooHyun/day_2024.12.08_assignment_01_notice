@@ -36,3 +36,11 @@ export const noticedEdit = (obj) => {
     },
   });
 };
+
+export const noticedAddition = (obj) => {
+  return api.post("/notice/addition", JSON.stringify(obj), {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};

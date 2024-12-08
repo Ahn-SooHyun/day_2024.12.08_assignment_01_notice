@@ -119,7 +119,7 @@ export default function EditNotice() {
           ></textarea>
         </div>
         <button type="submit">저장</button>
-        <button type="button" onClick={() => navigate(`/notices`)}>
+        <button type="button" onClick={() => navigate(`/NoticeDetail/${id}`)}>
           취소
         </button>
       </form>

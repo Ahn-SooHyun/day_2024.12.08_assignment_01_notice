@@ -104,6 +104,10 @@ export default function NoticeDetail() {
       });
   };
 
+  const list = () => {
+    navigate("../NoticeList"); // 수정 페이지로 이동
+  };
+
   if (loading) return <div className="notice-detail loading">로딩 중...</div>;
   if (error) return <div className="notice-detail error">{error}</div>;
 
@@ -128,6 +132,7 @@ export default function NoticeDetail() {
           <p>
             <strong>작성일자:</strong>{" "}
             {new Date(notice.userDate).toLocaleDateString()}{" "}
+            <button onClick={list}>리스트</button>{" "}
             {notice.yn == "true" ? (
               <>
                 <button onClick={handleEditClick}>수정</button>{" "}

@@ -62,17 +62,7 @@ export default function NoticeList() {
   };
 
   const addition = () => {
-    const cookieValue = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("CT_AT="))
-      ?.split("=")[1];
-
-    if (!cookieValue) {
-      navigate("/Login");
-      return;
-    }
-
-    fetchNotices(cookieValue);
+    navigate("/NoticeAddition");
   };
 
   if (loading) return <div className="notice-list loading">로딩 중...</div>;
